@@ -17,7 +17,7 @@
 | --------   | ----- | ---- | ---- |
 | total      | Number   | 0 | 总数据条数    |
 | pageSize   |   Number   | 10 | 每页条数   |
-| currentPage |    Number    | 1 | 当前页码  |
+| currentPage |    Number    | 1 | 当前页码 支持.sync |
 | pathPrefix |    String    | '/'  | 生成路由前缀  |
 | pageQueryName |    String  | 'page' |  查询参数名称 ⚠️：queryMode 为 2 时生效  |
 | queryMode |    Number    | 1 |   1 动态路由模式, 2 查询参数模式  |
@@ -30,49 +30,41 @@
 | background | Boolean | false | 是否为分页按钮添加背景色 |
 | small | Boolean | false | 是否使用小型分页样式 |
 
+# Events
+| event    | value  |  desc  |
+| --------   | ----- | ---- | ---- |
+| currentChange | {page: 1, path: '/page/path/to/12',}  |  页码改变回调    |
 
 # Usege
 
-#### 1、局部注册
-```html
-<script setup lang="ts">
-import YoPagination from './packages/Pagination.vue'
-import { reactive } from 'vue'
-import { useRouter } from 'vue-router'
-const router = useRouter()
-const query = reactive({
-    total: 100,
-    page: 1,
-})
-const handleChangePage = (e: { path: string; page: number }) => {
-    router.push(e.path)
-}
-</script>
-
-<template>
-    <YoPagination
-        @current-change="handleChangePage"
-        :total="100"
-        :query-mode="2"
-        page-query-name="page"
-        path-prefix="/pages/number?t=12"
-        v-model:current-page="query.page"
-    />
-</template>
-
-<style></style>
-
+#### 1、安装
+```bash 
+yarn install vue2-ssr-pagination 
+#or 
+npm install vue2-ssr-pagination 
 ```
 
-#### 2、全局注册
-```js
-  import App from './App.vue'
-  import YoPagination from './packages/index'
-  import { createApp } from 'vue'
+#### 2、全局注册引入
+```html
+import VueSSRPagination from 'vue2-ssr-pagination'
+import 'vue2-ssr-pagination/lib/vue-ssr-pagination.css'
+Vue.use(VueSSRPagination)
+```
 
-  const app = createApp(App)
-
-  app.use(YoPagination)
-  
-  app.mount('#app')
+#### 3、局部注册引入
+```html
+<script>
+import { VueSSRPagination } from 'vue2-ssr-pagination'
+import 'vue2-ssr-pagination/lib/vue-ssr-pagination.css'
+export default {
+    components: {
+        VueSSRPagination
+    }
+}
+</script>
+<template>
+    <div>
+        <VueSSRPagination />
+    </div>
+</template>
 ```

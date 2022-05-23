@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <VueSSRPagination :current-page.sync="currentPage" :total="100" />
+        <VueSSRPagination :current-page.sync="currentPage" :total="1" />
     </div>
 </template>
 

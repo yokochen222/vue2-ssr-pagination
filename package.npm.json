@@ -1,0 +1,12 @@
+{
+  "name": "vue2-ssr-pagination",
+  "version": "1.0.2",
+  "private": false,
+  "license": "MIT",
+  "main": "./lib/vue-ssr-pagination.umd.min.js",
+  "scripts": {
+    "lib": "vue-cli-service build --target lib --dest lib --name 'vue-ssr-pagination' './src/packages/index.js'"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

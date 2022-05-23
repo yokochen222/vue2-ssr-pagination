@@ -152,6 +152,10 @@ export default {
                 page: page,
                 path: this.pathPrefixComputed + page,
             })
+            this.$emit('current-change', {
+                page: page,
+                path: this.pathPrefixComputed + page,
+            })
             return
         },
         handleShowMoreClick(type) {
@@ -304,17 +308,23 @@ export default {
                         1
                     </a>
                     {dms}
-                    <a
-                        onClick={(e) => {
-                            this.handleChangePage(this.totalPage, e)
-                        }}
-                        href={`${this.pathPrefixComputed}${this.totalPage}`}
-                        class={`yo-pagination-btn ${
-                            this.currentPage === this.totalPage ? 'active' : ''
-                        }`}
-                    >
-                        {this.totalPage}
-                    </a>
+                    {this.totalPage > 1 ? (
+                        <a
+                            onClick={(e) => {
+                                this.handleChangePage(this.totalPage, e)
+                            }}
+                            href={`${this.pathPrefixComputed}${this.totalPage}`}
+                            class={`yo-pagination-btn ${
+                                this.currentPage === this.totalPage
+                                    ? 'active'
+                                    : ''
+                            }`}
+                        >
+                            {this.totalPage}
+                        </a>
+                    ) : (
+                        ''
+                    )}
                 </div>
             )
         }
