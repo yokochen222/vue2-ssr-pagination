@@ -12,6 +12,10 @@ tsconfig.node.json
 vite.config.ts
 yarn.lock
 package-lock.json
+babel.config.js
+vue.config.js
+package copy.json
+package.dev.json
 
 docs
 favicon.ico
